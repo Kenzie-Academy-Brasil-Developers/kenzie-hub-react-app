@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { StyledContainerDashboard } from "../../Styles/Container";
 import { StyledHeaderDashboard } from "../../Styles/Header";
 import { StyledTitle } from "../../Styles/typography";
-import { StyledDivMaintenance } from "./divMaintenance";
+import { StyledDivProfileInfo } from "./StyledDivProfileInfo";
+import { SectionTechnologies } from "./Technologies/Technologies";
 
 export function Dashboard() {
   const navigate = useNavigate()
@@ -25,17 +26,12 @@ export function Dashboard() {
         <Link to={'/'} onClick={() => {localStorage.removeItem('userData')}}>Sair</Link>
       </StyledHeaderDashboard>
 
-      <StyledDivMaintenance>
-        <div>
-          <StyledTitle tag={'h3'}>Olá, {userData?.user.name}</StyledTitle>
-          <small>{userData?.user.course_module}</small>
-        </div>
+      <StyledDivProfileInfo>
+        <StyledTitle tag={'h2'}>Olá, {userData?.user.name}</StyledTitle>
+        <small>{userData?.user.course_module}</small>
+      </StyledDivProfileInfo>
 
-        <div>
-          <StyledTitle tag={'h3'}>Que pena! Estamos em desenvolvimento :(</StyledTitle>  
-          <p>Nossa aplicação está em desenvolvimento, em breve teremos novidades</p>
-        </div>
-      </StyledDivMaintenance>
+      <SectionTechnologies/>
     </StyledContainerDashboard>
   )
 }

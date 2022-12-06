@@ -20,8 +20,14 @@ export const StyledTitle = styled(BaseTitle)`
                 `
             case 'h3':
                 return css`
+                    font-size: var(--size2);
+                    font-weight: 500;
+                    color: var(--grey0);
+                `
+            case 'h4':
+                return css`
                     font-size: var(--size3);
-                    font-weight: 700;
+                    font-weight: 600;
                     color: var(--grey0);
                 `
         }
