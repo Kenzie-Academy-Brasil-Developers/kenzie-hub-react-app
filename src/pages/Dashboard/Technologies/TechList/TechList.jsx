@@ -1,8 +1,6 @@
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
 import { UserContext } from "../../../../contexts/UserContext";
-import { api } from "../../../../services/api";
-import { StyledTechList } from "./StyledList";
+import { StyledNoTech } from "./StyledNoTech";
 import { TechCard } from "./TechCard/TechCard";
 
 export function TechList () {
@@ -10,8 +8,22 @@ export function TechList () {
     console.log(userData);
     
     return (
-        <StyledTechList>
-            {userData ? userData.techs.map((tech) => <TechCard/>) : null}
-        </StyledTechList>
+        <>
+            {userData?.techs ?
+                <ul>
+                    {userData && userData.techs.map((tech) => 
+                        <TechCard
+                            key={tech.id}
+                            title={tech.title}
+                            status={tech.status}
+                        />
+                    )}
+                </ul>
+                :
+                <StyledNoTech>
+                    <p>Sem tecnologias no momento. Clique no símbolo de + para adicionar uma tecnologia nova.</p>
+                </StyledNoTech>
+            }
+        </>
     )
 }
