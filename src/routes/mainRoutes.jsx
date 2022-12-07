@@ -7,10 +7,10 @@ import { Register } from "../pages/Register/register";
 export function RoutesMain () {
     return (
         <Routes>
-            <Route path="/"     element={<Login    />}></Route>
-            <Route path="/register"  element={<Register />}></Route>
+            <Route path="/"                  element={<Login    />}></Route>
+            <Route path="/register"          element={<Register />}></Route>
             <Route path="/dashboard/:userId" element={<Dashboard/>}></Route>
-            <Route path="*"          element={<NotFound />}></Route>
+            <Route path="*"                  element={<NotFound />}></Route>
         </Routes>
     )
 }
