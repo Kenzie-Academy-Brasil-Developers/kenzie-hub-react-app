@@ -3,6 +3,8 @@ import { StyledTechCard } from "./StyledCard";
 import { FaRegTrashAlt } from "react-icons/fa"
 
 export function TechCard () {
+    
+    
     return (
         <StyledTechCard>
             <StyledTitle tag={'h4'}>React JS</StyledTitle>
