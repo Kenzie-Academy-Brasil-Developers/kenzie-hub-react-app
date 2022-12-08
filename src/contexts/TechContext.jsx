@@ -4,7 +4,7 @@ import { api } from "../services/api";
 export const TechContext = createContext({})
 
 export function TechProvider ({ children }) {
-    const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
+    const [isAddTechModalOpen, setIsAddTechModalOpen] = useState(false)
     
     // function openCreateTechModal () {
     //     return 
@@ -15,7 +15,7 @@ export function TechProvider ({ children }) {
     }
     
     return (
-        <TechContext.Provider value={{ deleteTech }}>
+        <TechContext.Provider value={{ deleteTech, isAddTechModalOpen, setIsAddTechModalOpen }}>
             {children}
         </TechContext.Provider>
     )

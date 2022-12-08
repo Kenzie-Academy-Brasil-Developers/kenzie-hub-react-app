@@ -36,8 +36,6 @@ export function Dashboard() {
 
         <SectionTechnologies/>
       </StyledContainerDashboard>
-
-      <AddTechModal/>
     </>
   )
 }
