@@ -62,19 +62,19 @@ export function UserProvider ({ children }) {
         }
     }
     
+    async function getUserProfile() {
+      const userToken = JSON.parse(localStorage.getItem('userData')).token
+      
+      api.defaults.headers.common['Authorization'] = `Bearer ${userToken}`
+      const response = await api.get('profile')
 
-    useEffect(() => {
-        if (localStorage.getItem('userData')) {
-            const userToken = JSON.parse(localStorage.getItem('userData')).token
+      setUserData(response.data)
+    }
+    getUserProfile()
 
-            api.get('profile', {
-                headers: {authorization: `Bearer ${userToken}`}
-            }).then((response) => {setUserData(response.data)})
-        }
-    }, [])
     
     return (
-        <UserContext.Provider value={{ loginUser, loadingLogin, createUser, loadingRegister, userData }}>
+        <UserContext.Provider value={{ loginUser, loadingLogin, createUser, loadingRegister, getUserProfile, userData }}>
             {children}
         </UserContext.Provider>
     )

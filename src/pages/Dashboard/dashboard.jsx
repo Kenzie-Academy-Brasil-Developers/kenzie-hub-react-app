@@ -9,10 +9,11 @@ import { StyledDivProfileInfo } from "./StyledDivProfileInfo";
 import { SectionTechnologies } from "./Technologies/Technologies";
 
 export function Dashboard() {
-  const { userData } = useContext(UserContext)
+  const { userData, getUserProfile } = useContext(UserContext)
   const navigate = useNavigate()
   
   useEffect(() => {
+    
     if (!localStorage.getItem('userData')) {
       navigate('/')
     }

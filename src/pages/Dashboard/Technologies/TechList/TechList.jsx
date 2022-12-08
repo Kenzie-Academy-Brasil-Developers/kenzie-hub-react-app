@@ -5,7 +5,6 @@ import { TechCard } from "./TechCard/TechCard";
 
 export function TechList () {
     const { userData } = useContext(UserContext)
-    console.log(userData);
     
     return (
         <>
@@ -14,6 +13,7 @@ export function TechList () {
                     {userData && userData.techs.map((tech) => 
                         <TechCard
                             key={tech.id}
+                            techId = {tech.id}
                             title={tech.title}
                             status={tech.status}
                         />
