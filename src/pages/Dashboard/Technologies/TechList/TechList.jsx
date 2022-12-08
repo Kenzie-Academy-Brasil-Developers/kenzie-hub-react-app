@@ -6,10 +6,6 @@ import { TechCard } from "./TechCard/TechCard";
 
 export function TechList () {
     const { userData } = useContext(UserContext)
-
-    useEffect(() => {
-        console.log(userData)
-    }, [])
     
     return (
         <>

@@ -3,6 +3,7 @@ import { StyledSectionTechnologies } from "./StyledSection";
 import { TechList } from "./TechList/TechList";
 
 export function SectionTechnologies () {
+    
     return (
         <StyledSectionTechnologies>
             <div>
