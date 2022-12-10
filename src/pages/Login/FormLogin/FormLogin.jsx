@@ -7,49 +7,22 @@ import { StyledForm } from "../../../Styles/form";
 import { loginSchema } from "./loginSchema";
 import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../../contexts/UserContext";
 
 
 export function FormLogin() {
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const { loginUser, loadingLogin } = useContext(UserContext)
 
   const { register, handleSubmit, formState: {errors}, reset } = useForm({
     resolver: yupResolver(loginSchema),
     mode: 'onBlur'
   })
 
-  if (loading) {
+  if (loadingLogin) {
     document.body.style.cursor = 'progress'
   } else {
     document.body.style.cursor = 'auto'
-  }
-  
-  async function loginUser(userData) {
-    try {
-      setLoading(true)
-
-      const response = await api.post('sessions', userData)
-
-      localStorage.setItem('userData', JSON.stringify(response.data))
-
-      toast.success('Login efetuado com sucesso');
-      
-      setTimeout(() => {
-        navigate(`/dashboard/${response.data.user.id}`)
-      }, 2200)
-      
-      
-    } catch (error) {
-      setLoading(true)
-
-      if (error.response.data.message === 'Incorrect email / password combination') {
-        toast.error('E-mail ou senha incorreta');
-      }
-      console.log(error)
-
-    } finally {
-      setLoading(false)
-    }
   }
   
   async function submitLogin (data) {
@@ -75,7 +48,7 @@ export function FormLogin() {
         {...register('password')}
       />
 
-      <StyledButton type="submit" disabled={loading}>{loading ? 'Aguarde...' : 'Entrar'}</StyledButton>
+      <StyledButton type="submit" disabled={loadingLogin}>{loadingLogin ? 'Aguarde...' : 'Entrar'}</StyledButton>
     </StyledForm>
   );
 }

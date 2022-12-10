@@ -7,39 +7,17 @@ import toast, { Toaster } from 'react-hot-toast';
 import { api } from "../../../services/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../../contexts/UserContext";
 
 
 export function FormRegister() {
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const { loadingRegister, createUser } = useContext(UserContext)
   
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(registerSchema),
     mode: 'onBlur'
   })
-  
-  async function createUser(newUserData) {
-    try {
-      setLoading(true)
-      const response = await api.post('users', newUserData)
-      console.log(response);
-      toast.success('Cadastrado com sucesso');
-
-      setTimeout(() => {
-        navigate('/')
-      }, 2200)
-      
-    } catch (error) {
-      setLoading(true)
-      if (error.response.data.message === 'Email already exists') {
-        toast.error('O e-mail inserido já existe')
-      }
-      console.log(error.response.data.message)
-
-    } finally {
-      setLoading(false)
-    }
-  }
   
   async function submitForm (data) {
     await createUser(data)
@@ -119,7 +97,7 @@ export function FormRegister() {
       </select>
       {errors.email && renderToast(errors.course_module)}
 
-      <StyledButton type="submit" disabled={loading}>Cadastrar</StyledButton>
+      <StyledButton type="submit" disabled={loadingRegister}>Cadastrar</StyledButton>
     </StyledForm>
   );
 }

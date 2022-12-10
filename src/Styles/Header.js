@@ -29,12 +29,10 @@ export const StyledHeader = styled.header`
 `
 
 export const StyledHeaderDashboard = styled.header`
-    margin-bottom: 40px;
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1.5px solid var(--grey3);
 
     a {
         display: block;
