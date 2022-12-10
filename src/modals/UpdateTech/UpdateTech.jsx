@@ -2,20 +2,20 @@ import { useContext } from "react";
 import { TechContext } from "../../contexts/TechContext";
 import { StyledTitle } from "../../Styles/typography";
 import { StyledBackgroundModal, StyledContainerModal } from "../StyledModal";
-import { AddTechForm } from "./AddTechForm/addTechForm";
+import { UpdateTechForm } from "./UpdateTechForm/UpdateTechForm";
 
-export function AddTechModal () {
-    const { setIsAddTechModalOpen } = useContext(TechContext)
+export function UpdateTechModal () {
+    const { setIsUpdateTechModalOpen } = useContext(TechContext)
     
     return (
         <StyledBackgroundModal>
             <StyledContainerModal>
                 <div>
-                    <StyledTitle tag={'h3'}>Cadastrar Tecnologia</StyledTitle>
-                    <span onClick={() => {setIsAddTechModalOpen(false)}}>X</span>
+                    <StyledTitle tag={'h3'}>Detalhes da Tecnologia</StyledTitle>
+                    <span onClick={() => {setIsUpdateTechModalOpen(false)}}>X</span>
                 </div>
-                
-                <AddTechForm/>
+
+                <UpdateTechForm/>
             </StyledContainerModal>
         </StyledBackgroundModal>
     )

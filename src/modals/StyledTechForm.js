@@ -30,6 +30,11 @@ export const StyledTechForm = styled.form`
         border: 1px solid var(--grey0);
     }
 
+    .inputDisabled{
+        font-weight: var(--weight4);
+        color: var(--grey1)
+    }
+
     select {
         width: 100%;
         height: 50px;
@@ -50,5 +55,23 @@ export const StyledTechForm = styled.form`
 
     button:hover {
         background-color: var(--brand-focus)
+    }
+
+    div {
+        display: flex;
+        gap: 20px;
+    }
+
+    div > button {
+        width: 60%;
+    }
+
+    div > button + button {
+        width: 30%;
+        background-color: var(--grey1)
+    }
+
+    div > button + button:hover {
+        background-color: var(--grey2)
     }
 `

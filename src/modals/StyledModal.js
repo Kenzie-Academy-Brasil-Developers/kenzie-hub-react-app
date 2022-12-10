@@ -14,7 +14,7 @@ export const StyledContainerModal = styled.section`
     margin: 40px auto;
     padding: 0.6rem;
 
-    div {
+    > div {
         display: flex;
         justify-content: space-between;
         padding: 20px;

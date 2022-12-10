@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { createContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
@@ -19,7 +20,7 @@ export function UserProvider ({ children }) {
     
           localStorage.setItem('userData', JSON.stringify(response.data))
     
-          toast.success('Login efetuado com sucesso');
+          toast.success('Login efetuado com sucesso')
           
           setTimeout(() => {
             navigate(`/dashboard/${response.data.user.id}`)
@@ -62,20 +63,30 @@ export function UserProvider ({ children }) {
         }
     }
     
+    
     async function getUserProfile() {
       const userToken = JSON.parse(localStorage.getItem('userData')).token
-      
-      api.defaults.headers.common['Authorization'] = `Bearer ${userToken}`
-      const response = await api.get('profile')
+      try {
+        api.defaults.headers.common['Authorization'] = `Bearer ${userToken}`
+        const response = await api.get('profile')
 
-      setUserData(response.data)
+        setUserData(response.data)
+        
+      } catch (error) {
+        console.log(error)
+      }
     }
-    getUserProfile()
+    
+    useEffect(() => {
+      (async () => {
+        await getUserProfile()
+      })()
 
+    }, [])
     
     return (
-        <UserContext.Provider value={{ loginUser, loadingLogin, createUser, loadingRegister, getUserProfile, userData }}>
-            {children}
-        </UserContext.Provider>
+      <UserContext.Provider value={{ loginUser, loadingLogin, createUser, loadingRegister, getUserProfile, userData }}>
+        {children}
+      </UserContext.Provider>
     )
 }

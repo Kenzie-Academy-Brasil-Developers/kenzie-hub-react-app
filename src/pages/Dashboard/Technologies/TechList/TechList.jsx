@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from "../../../../contexts/UserContext";
 import { StyledNoTech } from "./StyledNoTech";
