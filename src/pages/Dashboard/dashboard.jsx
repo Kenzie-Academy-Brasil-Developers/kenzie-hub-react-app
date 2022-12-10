@@ -15,6 +15,7 @@ export function Dashboard() {
   const navigate = useNavigate()
   
   useEffect(() => {
+    getUserProfile()
     
     if (!localStorage.getItem('userData')) {
       navigate('/')
