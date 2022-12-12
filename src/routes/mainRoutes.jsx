@@ -10,7 +10,7 @@ export function RoutesMain () {
         <Routes>
             <Route path="/"                  element={<Login    />}></Route>
             <Route path="/register"          element={<Register />}></Route>
-            <Route path="/dashboard/:userId" element={<TechProvider><Dashboard/></TechProvider>}></Route>
+            <Route path="/dashboard" element={<TechProvider><Dashboard/></TechProvider>}></Route>
             <Route path="*"                  element={<NotFound />}></Route>
         </Routes>
     )
