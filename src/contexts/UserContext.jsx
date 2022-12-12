@@ -25,7 +25,7 @@ export function UserProvider ({ children }) {
       toast.success('Login efetuado com sucesso')
       
       setTimeout(() => {
-        navigate(`/dashboard/${response.data.user.id}`)
+        navigate(`/dashboard`)
       }, 2000)
       
       

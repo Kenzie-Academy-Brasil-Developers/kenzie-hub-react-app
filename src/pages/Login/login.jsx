@@ -16,7 +16,7 @@ export function Login() {
     const userData = JSON.parse(localStorage.getItem('userData'))
 
     if (userData) {
-      navigate(`/dashboard/${userData.user.id}`)
+      navigate(`/dashboard/`)
     }
   }, [])
 
